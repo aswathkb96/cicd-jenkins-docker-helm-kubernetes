@@ -114,6 +114,83 @@ kubectl version --short --client
 
 ![kubectl](./images/kubectl.png)
 
+INSTALL EKSCTL
+
+```
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+```
+Move the extracted binary to /usr/local/bin. 
+```
+sudo mv /tmp/eksctl /usr/local/bin
+```
+VERIFY INSTALLATION
+```
+eksctl version
+```
+![eksctl](./images/eksctl.png)
+
+
+INSTALL DOCKER
+
+Update local packages 
+```
+sudo apt update
+```
+```
+Install the below packages```
+sudo apt install gnupg2 pass -y
+```
+ 
+Install docker
+```
+sudo apt install docker.io -y
+```
+
+Add Ubuntu user to Docker group
+```
+sudo usermod -aG docker $USER
+```
+We need to reload shell in order to have new group settings applied. 
+```
+newgrp docker
+```
+The Docker service needs to be setup to run at startup. 
+```
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+Check the installation
+```
+sudo systemctl status docker
+```
+![docker](./images/docker.png)
+
+INSTALL JENKINS
+```
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
+
+sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt update
+
+sudo apt install jenkins
+
+sudo systemctl start jenkins.service
+```
+
+Check if Jenkins in running
+```
+sudo systemctl status jenkins
+```
+![jenkins](./images/jenkins.png)
+
+
+
+
+
+
+
 
 
 

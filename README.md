@@ -36,4 +36,4 @@ AMI: Ubuntu 22.04 LTS
 
 INSTANCE TYPE: t2.Large  (This isn't on the free tier and will cost you. We need enough RAM and CPU to install the pre-requisites) 
 
-[Launch EC2](./images/launch-ec2.png)
+![Launch EC2](./images/launch-ec2.png)

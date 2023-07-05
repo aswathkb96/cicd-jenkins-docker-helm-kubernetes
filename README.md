@@ -6,7 +6,7 @@ Deploy a springboot Java Application into an EKS (Elastic Kubernetes Service) cl
 4. Maven builds JAR file
 5. Build Docker Image with dockerfile
 6. Tag and push Docker Image to ECR
-7. Deplo to EKS using Helm
+7. Deploy to EKS using Helm
 
 
 Pre-requisites

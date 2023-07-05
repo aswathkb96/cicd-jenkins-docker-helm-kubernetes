@@ -25,6 +25,13 @@ Pre-requisites
    f. Jenkins
 
 
+IMPLEMENTATION STEPS ARE AS FOLLOWS
+- Create Github repo and constantly push our code from VSCode to Github repo (Application code, Jenkinsfile,Dockerfile and Helm Chart)
+- Create Jenkins Server (EC2) and install all the necessary tools and applications as above
+-  Create an EKS cluster with 2 worker nodes in AWS using eksctl
+-  Create an ECR repository to host our docker image
+
+
 
 CREATE JENKINS SERVER
 

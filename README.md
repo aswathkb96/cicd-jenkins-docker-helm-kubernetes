@@ -221,6 +221,21 @@ sudo systemctl status docker
 ```
 ![docker](./images/docker.png)
 
+
+
+LETS CONFIGURE MAVEN PLUGIN THAT WILL BE USED IN OUR JENKINS PIPELINE
+
+- We shall be using Maven for our build
+
+Manage Jenkins > Tools > Maven > Add maven > Save
+
+Go back into Manage Jenkis > Tools > Maven Installations
+Set Maven name as Maven 3 and MAVEN_HOME as /usr/share/maven
+
+![maven](./images/maven.png)
+
+
+
 CREATE HELM CHART AND MODIFY VALUES.YAML AND DEPLOYMENT.YAML
 
 Let's go to the root of our springboot application omn our local machine. 
@@ -260,6 +275,13 @@ and update containerPort to 8080 as springboot application
 
 ![git](./images/git.png)
 
+
+![github](./images/github.png)
+
+
+
+
+
 CREATE EKS CLUSTER USING EKSCTL
 #### We need to create Create IAM Role with Administrator Access
 
@@ -297,6 +319,7 @@ eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nod
 
 
 
+
 CREATE JENKINS PIPELINE
 
 Dashboard > New Item > Enter Item name > Select Pipeline and click oK.
@@ -308,10 +331,6 @@ Let's configure the pipeline to use the Jenkinsfile from our github repository
 ![git](./images/pipeline-configure.png)
 
 
-
-LETS CONFIGURE THE PLUGINS THAT WILL BE USED IN OUR JENKINS PIPELINE
-
-- We shall be using Maven and Docker
 
 
 

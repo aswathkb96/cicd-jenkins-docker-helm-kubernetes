@@ -241,6 +241,8 @@ open mychart/values.yaml.
 Add Docker image details to download image from ECR before deploying to EKS cluster
 open mychart/values.yaml.
 
+Edit repository : ImageName
+
 ![values1](./images/values1.png)
 
 Enter the service type as LoadBalancer
@@ -248,13 +250,13 @@ Enter the service type as LoadBalancer
 ![values2](./images/values2.png)
 
 Next, open templates/deployment.yaml
-and update containerPort to 8080
+and update containerPort to 8080 as springboot application
 
 
 
 ![port](./images/port.png)
 
-Save the files and push to our Github repo
+#### Save the files and push to our Github repo
 
 
 

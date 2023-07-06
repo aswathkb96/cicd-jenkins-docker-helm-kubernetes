@@ -258,7 +258,7 @@ and update containerPort to 8080 as springboot application
 
 #### Save the files and push to our Github repo
 
-
+![git](./images/git.png)
 
 CREATE EKS CLUSTER USING EKSCTL
 #### We need to create Create IAM Role with Administrator Access
@@ -297,9 +297,21 @@ eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nod
 
 
 
-
-
 CREATE JENKINS PIPELINE
+
+Dashboard > New Item > Enter Item name > Select Pipeline and click oK.
+
+![new item](./images/jenkins-new-item.png)
+
+Let's configure the pipeline to use the Jenkinsfile from our github repository
+
+![git](./images/pipeline-configure.png)
+
+
+
+LETS CONFIGURE THE PLUGINS THAT WILL BE USED IN OUR JENKINS PIPELINE
+
+- We shall be using Maven and Docker
 
 
 

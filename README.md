@@ -236,8 +236,6 @@ tree mychart
 Add Docker image details to download from ECR before deploying to EKS cluster
 open mychart/values.yaml.
 
-```
-
 
 
 Add Docker image details to download image from ECR before deploying to EKS cluster

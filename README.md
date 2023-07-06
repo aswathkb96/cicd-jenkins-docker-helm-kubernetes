@@ -193,7 +193,7 @@ INSTALL DOCKER AND DOCKER PIPELINE PLUGIN AND ADD JENKINS USER TO DOCKER GROUP
 Now Login to Jenkins > manage Jenkins > Available plugins and install
 - Docker plugin
 - Docker Pipeline plugin
-
+```
 ![docker plugins](./images/docker-install.png)
 
 
@@ -221,9 +221,10 @@ sudo systemctl status docker
 ```
 ![docker](./images/docker.png)
 
-CREATE HELM CHART
+CREATE HELM CHART AND MODIFY VALUES.YAML AND DEPLOYMENT.YAML
 
-Go to the root of your springboot application. 
+Let's go to the root of our springboot application omn our local machine. 
+
 Create helm chart by executing the commands below
 ```
 helm create mychart
@@ -260,21 +261,21 @@ Save the files and push to our Github repo
 
 
 CREATE EKS CLUSTER USING EKSCTL
-- We need to create Create IAM Role with Administrator Access
+#### We need to create Create IAM Role with Administrator Access
 
-Create an IAM role with AdministratorAccess policy.
-Go to AWS console > IAM > Roles. create a role
-Select AWS services, Click EC2, Click on Next permissions.
+- Create an IAM role with AdministratorAccess policy.
+- Go to AWS console > IAM > Roles. create a role
+- Select AWS services, Click EC2, Click on Next permissions.
 AdministratorAccess policy and select
-Name your role and create it
- - We need to assign the role to our Jenkins instance
+- Name your role and create it
 
- Go to AWS console > EC2 > EC2 instance > Security
+#### Next, we need to assign the created role to our Jenkins instance
 
-Click on Modify IAM Role
+ - Go to AWS console > EC2 > EC2 instance > Security
 
+ - Click on Modify IAM Role
 
-Choose the role we created from the dropdown and click on Apply.
+ - Choose the role we created from the dropdown and click on Apply.
 
 Our Instance can now request services on our behalf
 
@@ -284,8 +285,36 @@ Switch to Jenkins user
 ```
 sudo su - jenkins
 ```
-
+Run command to create EKS cluster with 2 worker nodes
 ```
 eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2 
 ```
+
+
+
+
+
+
+
+
+
+
+CREATE JENKINS PIPELINE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

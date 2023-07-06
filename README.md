@@ -252,11 +252,40 @@ Next, open templates/deployment.yaml
 and update containerPort to 8080
 
 
-Save the files and push to our Github repo
 
 ![port](./images/port.png)
 
+Save the files and push to our Github repo
 
 
 
+CREATE EKS CLUSTER USING EKSCTL
+- We need to create Create IAM Role with Administrator Access
+
+Create an IAM role with AdministratorAccess policy.
+Go to AWS console > IAM > Roles. create a role
+Select AWS services, Click EC2, Click on Next permissions.
+AdministratorAccess policy and select
+Name your role and create it
+ - We need to assign the role to our Jenkins instance
+
+ Go to AWS console > EC2 > EC2 instance > Security
+
+Click on Modify IAM Role
+
+
+Choose the role we created from the dropdown and click on Apply.
+
+Our Instance can now request services on our behalf
+
+CREATE EKS CLUSTER WITH eksctl
+
+Switch to Jenkins user
+```
+sudo su - jenkins
+```
+
+```
+eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2 
+```
 

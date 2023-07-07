@@ -1,19 +1,22 @@
-Deploy a springboot Java Application into an EKS (Elastic Kubernetes Service) cluster using Helm and a Jenkins Pipeline 
+In this project, we will Deploy a springboot Java Application into an EKS (Elastic Kubernetes Service) cluster using Helm and a Jenkins Pipeline 
+
+Our pipeline workflow will be as follows:
 
 1. Push code into Version Control System (Github) - Application code, Jenkinsfile,Dockerfile and Helm Chart
 2. Pushing to Github triggers Jenkins pipeline
 3. Jenkins checks out the code from Github
 4. Maven builds JAR file
-5. Build Docker Image with dockerfile
-6. Tag and push Docker Image to ECR
-7. Deploy to EKS using Helm
+5. Unit tests are performed
+6. Build Docker Image with dockerfile
+7. Tag and push Docker Image to ECR
+8. Deploy to EKS using Helm
 
 
 Pre-requisites
 
-1. EKS Cluster - Use eksctl to create cluster with 2 worker nodes
+1. EKS Cluster - For simplicity, we shall use eksctl to create cluster with 2 worker nodes
 
-2. ECR Repository - Create one on AWS
+2. ECR Repository - Create one on AWS. This will host our Docker image.
 
 3. Launch EC2 to act as our Jenkins server
 - Install the following on our Jenkins server

@@ -11,6 +11,8 @@ Our pipeline workflow will be as follows:
 7. Tag and push Docker Image to ECR
 8. Deploy to EKS using Helm
 
+![diagram](./images/aws.jpg)
+
 
 Pre-requisites
 

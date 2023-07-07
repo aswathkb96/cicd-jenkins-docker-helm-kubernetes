@@ -186,6 +186,25 @@ sudo systemctl status jenkins
 ![jenkins](./images/jenkins.png)
 
 
+Access your jenkins istallation in your web browser using your instance public IP address on port 8080
+Make sure that port 8080 is open in your inbound rules for your Jenkins server  EC2 Instance
+
+Go to http://yourinstancepublicip:8080
+
+![jankins](./images/jenkins6.png)
+![jankins](./images/jenkins7.png)
+![jankins](./images/jenkins8.png)
+![jankins](./images/jenkins9.png)
+![jankins](./images/jenkins10.png)
+
+![jankins](./images/jenkins11.png)
+
+
+
+
+
+
+
 INSTALL DOCKER AND DOCKER PIPELINE PLUGIN AND ADD JENKINS USER TO DOCKER GROUP
 
 ```

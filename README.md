@@ -311,8 +311,12 @@ Run command to create EKS cluster with 2 worker nodes
 ```
 eksctl create cluster --name demo-eks --region us-east-1 --nodegroup-name my-nodes --node-type t3.small --managed --nodes 2 
 ```
+Verify the cluster has been created by viewing the 2 worker nodes. We have already installed Kubectl on the Jenkins instance.
 
-
+```
+kubectl get nodes
+```
+![get nodes](./images/get-nodes.png)
 
 
 CREATE JENKINS PIPELINE

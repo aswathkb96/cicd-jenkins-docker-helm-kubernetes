@@ -357,6 +357,7 @@ We have created an environment variable for our ECR repository url
         }
 ```
 3. We will build our docker Image and tag it with the $BUILD_NUMBER
+We will store the docker build in a variable dockerImage, to allow easy tagging with the build number before pushing to the repository.
 
 ```
         stage('Build Docker Image') {
@@ -369,7 +370,11 @@ We have created an environment variable for our ECR repository url
         }
 ```
 4. Push the Docker Image to our ECR registry
-
+The push command is available in our ECR Registry
+![get push command](./images/ecr1.png)
+Retrive an identification token and authenticate the docker client
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 185439933271.dkr.ecr.us-east-1.amazonaws.com
+![get ecr token](./images/ecr2.png)
 ```
         stage('Push Docker Image') {
             steps {

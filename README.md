@@ -326,6 +326,11 @@ Before we deploy our application using helm, we want to create a namespace and d
 ```
 create namespace helm-deployment
 ```
+```
+helm ls -n helm-deployment
+```
+![helm ls](./images/helm.png)
+
 We shall the deploy into the namespace using the hel upgrade install command in our pipelines deploy stage. 
 
 CREATE JENKINS PIPELINE
@@ -369,7 +374,16 @@ We have created an environment variable for our ECR repository url
             }
         }
 ```
-3. We will build our docker Image and tag it with the $BUILD_NUMBER
+
+3. Perform a Unit Test
+```
+               stage('Unit Test') {
+            steps {
+               sh 'mvn test'
+            }
+        }
+```
+4. We will build our docker Image and tag it with the $BUILD_NUMBER
 We will store the docker build in a variable dockerImage, to allow easy tagging with the build number before pushing to the repository.
 
 ```
@@ -382,7 +396,7 @@ We will store the docker build in a variable dockerImage, to allow easy tagging 
             }
         }
 ```
-4. Push the Docker Image to our ECR registry
+5. Push the Docker Image to our ECR registry
 The push command is available in our ECR Registry
 Select your repo and click the view push commands button.
 ![get push command](./images/ecr1.png)
@@ -400,7 +414,7 @@ aws ecr get-login-password --region us-east-1 | docker login --username AWS --pa
         }
 ```
 
-5. Deploy our comtainer into our EKS cluster using a helm chart
+6. Deploy our comtainer into our EKS cluster using a helm chart
 
 ```
         stage('Helm Deployment') {
@@ -432,6 +446,11 @@ pipeline {
         stage('Build Artifact') {
             steps {
                sh 'mvn clean install'
+            }
+        }
+         stage('Unit Test') {
+            steps {
+               sh 'mvn test'
             }
         }
         stage('Build Docker Image') {

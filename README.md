@@ -328,6 +328,59 @@ Let's configure the pipeline to use the Jenkinsfile from our github repository
 
 #### Jenkinsfile
 
+Here are our Jenkins pipeline stages
+
+We have created an environment variable for our ECR repository url
+```
+    environment {
+        registry = "185439933271.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repo"
+    }
+```
+
+1. Checkout code from Github
+
+```
+        stage('Git Checkout') {
+            steps {
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/deleonab/cicd-jenkins-docker-helm-kubernetes.git']])
+            }
+        }
+```
+
+
+2.  Build our application using Maven into a JAR file in our target directory
+```
+        stage('Build Artifact') {
+            steps {
+               sh 'mvn clean install'
+            }
+        }
+```
+3. We will build our docker Image and tag it with the $BUILD_NUMBER
+
+```
+        stage('Build Docker Image') {
+            steps {
+               script{
+                   dockerImage = docker.build registry
+                   dockerImage.tag("$BUILD_NUMBER")
+               }
+            }
+        }
+```
+4. Push the Docker Image to our ECR registry
+
+```
+        stage('Push Docker Image') {
+            steps {
+               script{
+                   sh'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 185439933271.dkr.ecr.us-east-1.amazonaws.com'
+                   sh'docker push 185439933271.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repo:$BUILD_NUMBER'
+               }
+            }
+        }
+```
+
 ```
 pipeline {
     

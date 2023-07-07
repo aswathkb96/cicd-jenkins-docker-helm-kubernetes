@@ -371,8 +371,9 @@ We will store the docker build in a variable dockerImage, to allow easy tagging 
 ```
 4. Push the Docker Image to our ECR registry
 The push command is available in our ECR Registry
+Select your repo and click the view push commands button.
 ![get push command](./images/ecr1.png)
-Retrive an identification token and authenticate the docker client
+Retrive an identification token and authenticate the docker client by running the AWSCLI command below
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 185439933271.dkr.ecr.us-east-1.amazonaws.com
 ![get ecr token](./images/ecr2.png)
 ```

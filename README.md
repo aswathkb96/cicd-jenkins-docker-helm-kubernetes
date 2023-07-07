@@ -203,11 +203,6 @@ Run cat /var/lib/jenkins/secrets/initialAdminPassword to get the initial login p
 ![jankins](./images/jenkins9.png)
 ![jankins](./images/jenkins10.png)
 
-![jankins](./images/jenkins11.png)
-
-
-
-
 
 
 
@@ -219,6 +214,9 @@ Now Login to Jenkins > manage Jenkins > Available plugins and install
 - Docker plugin
 - Docker Pipeline plugin
 ```
+
+![jankins](./images/jenkins11.png)
+
 ![docker plugins](./images/docker-install.png)
 
 

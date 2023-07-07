@@ -15,7 +15,6 @@ Our pipeline workflow will be as follows:
 
 
 
-
 Pre-requisites
 
 1. EKS Cluster - For simplicity, we shall use eksctl to create cluster with 2 worker nodes
@@ -561,7 +560,7 @@ Let's go to this url in our browser ad94ffdc78810478780c6a533fb2eb6a-2046723893.
 ![final app](./images/final.png)
 
 
-
+.
 
 
 

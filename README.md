@@ -480,6 +480,14 @@ pipeline {
 ```
 
 
+Let's run our pipeline from inside Jenkins
+Let's go to our project and click 'Build Now'
+
+![build Now](./images/pipeline1.png)
+
+After a few hiccups, Our pipeline ran successfully
+
+![build Now](./images/pipeline2.png)
 
 
 

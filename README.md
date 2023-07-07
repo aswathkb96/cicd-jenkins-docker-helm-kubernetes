@@ -329,7 +329,7 @@ create namespace helm-deployment
 ```
 helm ls -n helm-deployment
 ```
-![helm ls](./images/helm.png)
+![helm ls](./images/ns.png)
 
 We shall the deploy into the namespace using the hel upgrade install command in our pipelines deploy stage. 
 

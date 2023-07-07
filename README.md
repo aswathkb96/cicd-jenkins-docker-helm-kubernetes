@@ -318,10 +318,19 @@ kubectl get nodes
 ```
 ![get nodes](./images/get-nodes.png)
 
+Check the EC2 console. We now have our Jenkins server and the 2 worker nodes running.
+![get nodes](./images/get-nodes2.png)
+
+Before we deploy our application using helm, we want to create a namespace and deploy our application into that namespace.
+
+```
+create namespace helm-deployment
+```
+We shall the deploy into the namespace using the hel upgrade install command in our pipelines deploy stage. 
 
 CREATE JENKINS PIPELINE
 
-Dashboard > New Item > Enter Item name > Select Pipeline and click oK.
+Dashboard > New Item > Enter Item name > Select Pipeline and click ok.
 
 ![new item](./images/jenkins-new-item.png)
 
@@ -391,6 +400,18 @@ aws ecr get-login-password --region us-east-1 | docker login --username AWS --pa
         }
 ```
 
+5. Deploy our comtainer into our EKS cluster using a helm chart
+
+```
+        stage('Helm Deployment') {
+            steps {
+               script{
+                   sh"helm upgrade first --install mychart --namespace helm-deployment --set image.tag=$BUILD_NUMBER"
+                  
+               }
+            }
+        }
+```
 ```
 pipeline {
     

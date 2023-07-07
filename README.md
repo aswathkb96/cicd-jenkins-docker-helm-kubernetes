@@ -490,19 +490,42 @@ After a few hiccups, Our pipeline ran successfully
 ![build Now](./images/pipeline2.png)
 
 
+We can view our deployed application by using the LoadBalancer url which exposes it to the internet
+We can get this by running kubectl get svc.
 
+Let's view all our resources in our namespace helm-deployment
+Let's view our 2 worker nodes
+```
+kubectl get nodes
+
+jenkins@ip-172-31-53-176:~$ kubectl get nodes
+NAME                             STATUS   ROLES    AGE   VERSION
+ip-192-168-23-179.ec2.internal   Ready    <none>   3d    v1.25.9-eks-0a21954
+ip-192-168-40-4.ec2.internal     Ready    <none>   3d    v1.25.9-eks-0a21954
+```
+Let's see our deployed application running in a pod
+```
+kubectl get pods -n helm-deployment
+
+jenkins@ip-172-31-53-176:~$ kubectl get pods -n helm-deployment
+NAME                             READY   STATUS    RESTARTS   AGE
+first-mychart-64b4fd4498-89hbp   1/1     Running   0          3m32s
 
 ```
-helm ls -n helm-deployment
+
+Let's view our LoadBalancer service which exposes our application to the world
+
 ```
-![helm ls](./images/ns.png)
+kubectl get svc -n helm-deployment
+```
+The external IP is our LoadBalancer url to view our application in a browser
+```
+jenkins@ip-172-31-53-176:~$ kubectl get svc -n helm-deployment
+NAME            TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)        AGE
+first-mychart   LoadBalancer   10.100.118.220   ad94ffdc78810478780c6a533fb2eb6a-2046723893.us-east-1.elb.amazonaws.com   80:30155/TCP   2d
+```
 
-
-
-
-
-
-
+Let's go to this url in our browser ad94ffdc78810478780c6a533fb2eb6a-2046723893.us-east-1.elb.amazonaws.com
 
 
 

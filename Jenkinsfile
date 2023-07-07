@@ -21,7 +21,7 @@ pipeline {
         }
                 stage('Unit Test') {
             steps {
-               sh 'mvn testl'
+               sh 'mvn test'
             }
         }
         stage('Build Docker Image') {

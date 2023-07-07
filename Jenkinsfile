@@ -19,6 +19,11 @@ pipeline {
                sh 'mvn clean install'
             }
         }
+                stage('Unit Test') {
+            steps {
+               sh 'mvn testl'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                script{

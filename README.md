@@ -1,4 +1,6 @@
 In this project, we will Deploy a springboot Java Application into an EKS (Elastic Kubernetes Service) cluster using Helm and a Jenkins Pipeline 
+![diagram](./images/aws.jpg)
+
 
 Our pipeline workflow will be as follows:
 
@@ -11,7 +13,7 @@ Our pipeline workflow will be as follows:
 7. Tag and push Docker Image to ECR
 8. Deploy to EKS using Helm
 
-![diagram](./images/aws.jpg)
+
 
 
 Pre-requisites
